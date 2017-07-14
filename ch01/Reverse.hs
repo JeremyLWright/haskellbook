@@ -1,19 +1,31 @@
-module Main where
+module Reverse where
 
+import Data.String.Utils
+import Data.Char
 
-dropWhile' :: (Char -> Bool) -> String -> String
-dropWhile' f (c:cs) 
-  | f c = cs
-  | otherwise = dropWhile' f cs
+isWhitespace :: Char -> Bool
+isWhitespace s = 
+  s == ' ' || s == '\n' || s == '\r' || s == '\f' || s == '\v' || s == '\160'
 
-countHelper :: String -> Integer -> Integer 
-countHelper (x:xs) n = if x == ' ' then n else countHelper xs n+1
-
-getIndexOfSpace :: String -> Integer
-getIndexOfSpace s = countHelper s 0
+taker :: String -> String -> [String] -> [String]
+taker (s:ss) acc list 
+  | ss == [] = packToFrontOfList accumulate
+  | s == ' ' = taker ss "" (packToFrontOfList acc)
+  | otherwise = taker ss accumulate list
+  where
+    accumulate = acc ++ [s]
+    packToFrontOfList a = a : list
 
 rvrs :: String -> String
-rvrs x = x
+rvrs "" = ""
+rvrs " " = ""
+rvrs s = strip $ unwords $ taker cleanS "" []
+  where cleanS = map replaceWithSpace $ strip s
+
+replaceWithSpace :: Char -> Char
+replaceWithSpace s
+  | isPrint s = s
+  | otherwise = ' '
 
 main :: IO ()
 main = print (rvrs "Curry is awesome")
