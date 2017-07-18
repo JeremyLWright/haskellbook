@@ -46,14 +46,6 @@ prop_myPalindromeReverseOfPalindromeIsPalindrome s = (isPalindrome s) == (isPali
 
 -- Chapter 4
 -- Problem #1
-awesome :: [String]
-awesome = ["Papuchon", "curry", ":)"]
-
-alsoAwesome :: [String]
-alsoAwesome = ["Quake", "The Simons"]
-
-allAwesome :: [[String]]
-allAwesome = [awesome, alsoAwesome]
 
 case_awesome :: Assertion
 case_awesome = (Exercises.length' awesome) @?= 3
