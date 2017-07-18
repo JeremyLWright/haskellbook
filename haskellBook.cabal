@@ -31,6 +31,7 @@ library
   exposed-modules:   Lib
                   ,  Exercises
   build-depends:     base >= 4.8 && < 5
+                  ,  MissingH >= 1.4 && < 2
 
 executable haskellBook-exe
   default-language:  Haskell2010

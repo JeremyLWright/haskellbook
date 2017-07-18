@@ -32,6 +32,9 @@ huTests :: [TestTree]
 huTests =
   [ testCase "Increment below TheAnswer" case_inc_below
   , testCase "Decrement above TheAnswer" case_dec_above
+  , testCase "Length of list awesome" case_awesome
+  , testCase "Length of list alsoAwesome" case_alsoAwesome 
+  , testCase "Length of list of list" case_allAwesome
   ]
 
 
@@ -40,6 +43,28 @@ prop_myAbsIsAlwaysPositive i = myAbs i >= 0
 
 prop_myPalindromeReverseOfPalindromeIsPalindrome :: String -> Bool
 prop_myPalindromeReverseOfPalindromeIsPalindrome s = (isPalindrome s) == (isPalindrome $ reverse s)
+
+-- Chapter 4
+-- Problem #1
+awesome :: [String]
+awesome = ["Papuchon", "curry", ":)"]
+
+alsoAwesome :: [String]
+alsoAwesome = ["Quake", "The Simons"]
+
+allAwesome :: [[String]]
+allAwesome = [awesome, alsoAwesome]
+
+case_awesome :: Assertion
+case_awesome = (Exercises.length' awesome) @?= 3
+
+case_alsoAwesome :: Assertion
+case_alsoAwesome = Exercises.length' alsoAwesome @?= 2
+
+case_allAwesome :: Assertion
+case_allAwesome = Exercises.length' allAwesome @?= 2
+
+
 
 prop_succ :: Integer -> Bool
 prop_succ n = inc n == succ n
