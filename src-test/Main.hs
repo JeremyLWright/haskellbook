@@ -13,6 +13,7 @@ tests :: [TestTree]
 tests =
   [ testGroup "SmallCheck" scTests
   , testGroup "Unit tests" huTests
+  , testGroup "QuickCheck" qcTests
   ]
 
 scTests :: [TestTree]
@@ -33,13 +34,17 @@ huTests =
   , testCase "Decrement above TheAnswer" case_dec_above
   ]
 
+
+prop_myAbsIsAlwaysPositive :: Integer -> Bool
 prop_myAbsIsAlwaysPositive i = myAbs i >= 0
+
+prop_myPalindromeReverseOfPalindromeIsPalindrome :: String -> Bool
 prop_myPalindromeReverseOfPalindromeIsPalindrome s = (isPalindrome s) == (isPalindrome $ reverse s)
 
-prop_succ :: Int -> Bool
+prop_succ :: Integer -> Bool
 prop_succ n = inc n == succ n
 
-prop_pred :: Int -> Bool
+prop_pred :: Integer -> Bool
 prop_pred n = inc (negate n) == negate (pred n)
 
 case_inc_below :: Assertion
