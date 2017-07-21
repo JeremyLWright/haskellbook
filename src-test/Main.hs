@@ -24,8 +24,11 @@ scTests =
 
 qcTests :: [TestTree]
 qcTests = 
-  [ QC.testProperty "Concatenate a with reverse a is a palindrome" prop_myPalindromeReverseOfPalindromeIsPalindrome 
+  [ QC.testProperty "Reverse of a palindrome is a palindrome" prop_myPalindromeReverseOfPalindromeIsPalindrome 
   ,  QC.testProperty "Absolute Value is always positive" prop_myAbsIsAlwaysPositive 
+  ,  QC.testProperty "Absolute Value with pattern matching is always positive" prop_myPatternAbsIsAlwaysPositive 
+  ,  QC.testProperty "Concatenate a with reverse a is a palindrome" prop_ConcatReverseOfStringIsAPalindrome 
+  ,  QC.testProperty "f1 adds one to the length" prop_LengthOfStringIsOneExtra 
   ]
 
 huTests :: [TestTree]
@@ -41,8 +44,20 @@ huTests =
 prop_myAbsIsAlwaysPositive :: Integer -> Bool
 prop_myAbsIsAlwaysPositive i = myAbs i >= 0
 
+prop_myPatternAbsIsAlwaysPositive :: Integer -> Bool
+prop_myPatternAbsIsAlwaysPositive i = myPatternAbs i >= 0
+
 prop_myPalindromeReverseOfPalindromeIsPalindrome :: String -> Bool
-prop_myPalindromeReverseOfPalindromeIsPalindrome s = (isPalindrome s) == (isPalindrome $ reverse s)
+prop_myPalindromeReverseOfPalindromeIsPalindrome s = (isPalindrome palindrome) == (isPalindrome $ reverse palindrome)
+  where palindrome = s ++ reverse s
+
+prop_ConcatReverseOfStringIsAPalindrome :: String -> Bool
+prop_ConcatReverseOfStringIsAPalindrome s = isPalindrome palindrome
+  where palindrome = s ++ reverse s
+
+prop_LengthOfStringIsOneExtra :: String -> Bool
+prop_LengthOfStringIsOneExtra s = (f1 s) == (+) (fromIntegral (length s)) 1
+
 
 -- Chapter 4
 -- Problem #1

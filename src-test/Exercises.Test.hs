@@ -22,6 +22,3 @@ properties = testGroup "Properties" [qcProps]
 
 qcProps = testGroup "(checked by QuickCheck)"
   ]
-    
-
---prop_myPalindromeconcatenateIsPalindrome 
