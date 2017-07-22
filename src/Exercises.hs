@@ -120,3 +120,37 @@ f1 xs = x w 1
 -- | Problem #2
 --
 -- This is supposed to be the identity function id.
+-- \ X = x is supposed to be the identity function, but haskell is case
+-- sensitive, so the lambda head must be lowercase
+
+-- | Problem #3
+--
+-- When fixed, this function will return 1 from the value [1,2,3]
+-- \ x : xs -> x
+--
+-- >>> (\ (x:_) -> x) [1,2,3]
+-- 1
+--
+-- Note that the _ is unnecessary but fixes a warning.
+
+-- | Problem #4 
+-- When fixed this function will return 1 from the value (1, 2)
+-- f (a b) = A
+-- >>> h (1, 2)
+-- 1
+--
+h :: (a , b) -> a
+h (a, _) = a
+
+type Name = String
+data Pet = Cat | Dog Name
+
+-- | Why name a cat?
+-- >>> :t Cat
+-- Cat :: Pet
+--
+-- >>> :t Dog
+-- Dog :: Name -> Pet
+
+isEqual :: Eq a => a -> a -> Bool
+isEqual x y = x == y
