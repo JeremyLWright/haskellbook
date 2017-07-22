@@ -30,6 +30,7 @@ library
   hs-source-dirs:    src
   exposed-modules:   Lib
                   ,  Exercises
+                  ,  Chapter5
   build-depends:     base >= 4.8 && < 5
                   ,  MissingH >= 1.4 && < 2
 

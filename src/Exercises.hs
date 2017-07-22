@@ -153,4 +153,4 @@ data Pet = Cat | Dog Name
 -- Dog :: Name -> Pet
 
 isEqual :: Eq a => a -> a -> Bool
-isEqual x y = x == y
+isEqual x1 y = x1 == y
