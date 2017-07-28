@@ -110,11 +110,11 @@ f tab tcd = ((snd tab, snd tcd), (fst tab, fst tcd))
 -- Here we want a function that adds 1 to the length of a string argument and
 -- returns that result.
 
-x :: Integer -> Integer -> Integer
-x = (+)
+lengthOBOB :: Integer -> Integer -> Integer
+lengthOBOB = (+)
 
 f1 :: String -> Integer
-f1 xs = x w 1
+f1 xs = lengthOBOB w 1
   where w = fromIntegral (length xs) 
 
 -- | Problem #2

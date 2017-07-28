@@ -31,6 +31,7 @@ library
   exposed-modules:   Lib
                   ,  Exercises
                   ,  Chapter5
+                  ,  TypeInference1
   build-depends:     base >= 4.8 && < 5
                   ,  MissingH >= 1.4 && < 2
 
